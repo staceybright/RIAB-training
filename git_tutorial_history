@@ -1,0 +1,95 @@
+     1	10:19	which git
+     2	10:19	mkdir gitdemo
+     3	10:20	cd gitdemo/
+     4	10:20	ls -a
+     5	10:20	git config --global "Stacey Bright"
+     6	10:21	git config --global user.name "Stacey Bright"
+     7	10:21	git config --global user.email bright@stsci.edu
+     8	10:21	git config --global color.ui auto
+     9	10:22	git init
+    10	10:22	ls -a
+    11	10:27	touch myfile
+    12	10:27	ls
+    13	10:27	git status
+    14	10:28	git add
+    15	10:28	git add myfile
+    16	10:28	git commit -m
+    17	10:29	git commit -m "descriptive memo"
+    18	10:30	git status
+    19	10:30	git log
+    20	10:30	ls > myfile
+    21	10:31	less myfile
+    22	10:31	git status
+    23	10:31	git add myfile
+    24	10:31	git status
+    25	10:32	git commit -m "another memo"
+    26	10:32	git log
+    27	10:33	git status
+    28	10:34	git help
+    29	10:34	git help add
+    30	10:38	echo foo > myfile
+    31	10:38	git status
+    32	10:38	git diff myfile
+    33	10:40	git help diff
+    34	10:41	git log
+    35	10:43	git log -2
+    36	10:43	git log -1
+    37	10:45	touch myfile2
+    38	10:45	git add myfile2
+    39	10:45	git commit myfile2
+    40	10:46	git commit myfile2 -m "memo2"
+    41	10:46	rm myfile2
+    42	10:46	git status
+    43	10:47	touch myfile3
+    44	10:47	git add myfile3
+    45	10:47	git commit myfile3 -m "memo3"
+    46	10:48	touch myfile4
+    47	10:48	git commit myfile4 -m "memo4"
+    48	10:49	git log
+    49	10:50	ls > myfile3
+    50	10:51	less myfile3
+    51	10:52	git status
+    52	10:52	git add myfile, myfile3
+    53	10:52	git add myfile
+    54	10:52	git add myfile myfile3
+    55	10:53	git status
+    56	10:53	git commit myfile3 -m "test memo"
+    57	10:53	git status
+    58	10:54	git add .
+    59	10:54	git status
+    60	10:54	git commit -m "testing deleted file for break"
+    61	10:54	git status
+    62	10:55	git rm myfile2
+    63	10:55	git status
+    64	11:18	pwd
+    65	11:18	cd ..
+    66	11:19	git clone https://github.com/staceybright/RIAB-training.git
+    67	11:19	ls
+    68	11:20	cd RIAB-training/
+    69	11:20	git status
+    70	11:20	ls -a
+    71	11:20	git remote
+    72	11:20	git remote -l
+    73	11:20	git remote -v
+    74	11:21	touch .gitignore
+    75	11:22	echo *.pyc
+    76	11:22	echo "*.pyc"
+    77	11:22	echo "*.pyc" > .gitignore
+    78	11:22	less .gitignore
+    79	11:23	touch temp.py
+    80	11:23	touch temp.pyc
+    81	11:23	git status
+    82	11:24	rm temp.py temp.pyc
+    83	11:24	git add .gitignore
+    84	11:25	git commit .gitignore -m "first commit of my .gitignore fiel, ignoring my .pyc file"
+    85	11:25	git push
+    86	11:26	git pull
+    87	11:28	emacs README &
+    88	11:28	ls
+    89	11:29	emacs README.md &
+    90	11:31	git status
+    91	11:31	git add README.md
+    92	11:32	git commit README.md -m "learning to use .md title, etc"
+    93	11:32	git push
+    94	11:39	history
+    95	11:42	history > git_tutorial_history
