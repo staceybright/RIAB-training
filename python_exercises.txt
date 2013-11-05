@@ -1,0 +1,337 @@
+EXERCISE 1:
+
+In [41]: PPNe_dict={}
+
+In [42]: PPNe_dict
+Out[42]: {}
+
+In [43]: PPNe_dict["IRAS08005"]={"Disk":"Yes","Obs":"Yes"}
+
+In [44]: PPNe_dict["IRAS08005"]
+Out[44]: {'Disk': 'Yes', 'Obs': 'Yes'}
+
+In [46]: PPNe_dict["IRAS17150"]={"Disk":"Yes","Obs":"No"}
+
+In [47]: PPNe_dict
+Out[47]: 
+{'IRAS08005': {'Disk': 'Yes', 'Obs': 'Yes'},
+ 'IRAS17150': {'Disk': 'Yes', 'Obs': 'No'}}
+
+---------------------------------------------------------------------------
+
+EXERCISE 2:
+
+In [84]: a=12
+
+In [86]: b="roses"
+
+In [87]: c=10
+
+In [89]: print "${:.2f} for {} {} is a good price!".format(c,a,b)
+$10.00 for 12 roses is a good price!
+
+---------------------------------------------------------------------------
+
+EXERCISE 3:
+
+In [104]: a=3.0
+
+In [105]: help(a)
+
+Help on float object:
+
+class float(object)
+ |  float(x) -> floating point number
+ |  
+ |  Convert a string or number to a floating point number, if possible.
+ |  
+ |  Methods defined here:
+ |  
+ |  __abs__(...)
+ |      x.__abs__() <==> abs(x)
+ |  
+ |  __add__(...)
+ |      x.__add__(y) <==> x+y
+ |  
+ |  __coerce__(...)
+ |      x.__coerce__(y) <==> coerce(x, y)
+ |  
+ |  __div__(...)
+ |      x.__div__(y) <==> x/y
+.
+.
+.
+
+---------------------------------------------------------------------------
+
+EXERCISE 4:
+
+In [132]: a=range(11)
+
+In [143]: c=[x**2 for x in a]
+
+In [144]: c
+Out[144]: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+
+---------------------------------------------------------------------------
+
+EXERCISE 5:
+
+In [148]: c=['2001-01','2001-02','2001-03','2001-04']
+
+In [149]: for x in c: print x+'-01'
+2001-01-01
+2001-02-01
+2001-03-01
+2001-04-01
+
+---------------------------------------------------------------------------
+
+EXERCISE 6:
+
+In [263]: w=[0,1,2,3]
+
+In [264]: for y in xrange(len(w)):
+    try:
+        print 1./w[y]
+    except ZeroDivisionError:
+        print 'this does not work for: ', y
+   .....:         
+this does not work for:  0
+1.0
+0.5
+0.333333333333
+
+-OR-
+
+In [269]: for x in xrange(4):
+    try:
+        print 1./x
+    except ZeroDivisionError:
+        print 'This does not work: ', x
+   .....:         
+This does not work:  0
+1.0
+0.5
+0.333333333333
+
+
+---------------------------------------------------------------------------
+
+EXERCISE 7:
+
+In [283]: glob.glob('/Users/bright/Desktop/training/Python/*')
+Out[283]: 
+['/Users/bright/Desktop/training/Python/python_exercises.txt',
+ '/Users/bright/Desktop/training/Python/PythonTraining.pdf']
+
+---------------------------------------------------------------------------
+
+EXERCISE 8:
+
+In [344]: a*2
+Out[344]: [1, 2, 3, 4, 1, 2, 3, 4]
+
+In [345]: b*2
+Out[345]: array([2, 4, 6, 8])
+
+In [346]: a+2
+TypeError                                 Traceback (most recent call last)
+<ipython-input-346-d86cfef2ffa6> in <module>()
+----> 1 a+2
+
+TypeError: can only concatenate list (not "int") to list
+
+In [347]: b+2
+Out[347]: array([3, 4, 5, 6])
+
+explanation:  NumPy arrays act as vectors so we can do element-wise addition, multiplication, etc.  While the list cannot and therefore gives an error during the addition test.  (But the can be duplicated when using the multiplication command)
+
+
+---------------------------------------------------------------------------
+
+EXERCISE 9:
+
+
+In [348]: c=[6,7,8,9]
+
+In [349]: c+b
+Out[349]: array([ 7,  9, 11, 13])
+
+In [350]: a+c
+Out[350]: [1, 2, 3, 4, 6, 7, 8, 9]
+
+explanation:  When adding a list to an array python completes element-element addition, whereas when adding a list to a list python "tacks-on" the second list to the first list.
+
+---------------------------------------------------------------------------
+
+EXERCISE 10:
+
+In [393]: np.arange(0.1,1.5,.1,dtype=float)
+Out[393]: 
+array([ 0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ,  1.1,
+        1.2,  1.3,  1.4])  
+
+-OR-
+
+In [394]: np.arange(1,15,1,dtype=float)*0.1
+Out[394]: 
+array([ 0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ,  1.1,
+        1.2,  1.3,  1.4])
+
+---------------------------------------------------------------------------
+
+EXERCISE 11:
+
+In [398]: np.arange(-3.2,-0.9,.2,dtype=float)
+Out[398]: 
+array([-3.2, -3. , -2.8, -2.6, -2.4, -2.2, -2. , -1.8, -1.6, -1.4, -1.2,
+       -1. ])
+
+-OR-
+
+In [400]: np.arange(-32,-9,2,dtype=float)*0.1
+Out[400]: 
+array([-3.2, -3. , -2.8, -2.6, -2.4, -2.2, -2. , -1.8, -1.6, -1.4, -1.2,
+       -1. ])
+
+Question:  Why should we only use integer step sizes? 
+
+
+---------------------------------------------------------------------------
+
+EXERCISE 12: 
+option 1
+
+In [461]: c=[random.random(),random.random(),random.random(),random.random(),random.random(),random.random(),random.random(),random.random(),random.random(),random.random(),]
+
+In [462]: c
+Out[462]: 
+[0.8985605209809446,
+ 0.9179180150228305,
+ 0.882512078189081,
+ 0.23014939330317485,
+ 0.21231672924392353,
+ 0.5951215857408334,
+ 0.39004886767143676,
+ 0.14271873925385514,
+ 0.5176286442769445,
+ 0.9730749207339201]
+
+In [465]: d=np.array(c)
+
+In [466]: b=d[d<0.5]
+
+In [467]: b
+Out[467]: array([ 0.23014939,  0.21231673,  0.39004887,  0.14271874])
+
+-OR-
+option 2
+
+In [504]: for i in xrange(10):
+   .....:     list.append(random.random())
+   .....: print list
+   .....: 
+[0.701341014677357, 0.9767866597839306, 0.2549118933102823, 0.22272773618622888, 0.8864087261820051, 0.008719445080499155, 0.6813472688447222, 0.8536078819071726, 0.984040566090407, 0.24477079753058162]
+
+In [506]: array=np.array(list)
+In [510]: less=array[array<0.5]
+In [511]: print less
+Out[511]: array([ 0.25491189,  0.22272774,  0.00871945,  0.2447708 ])
+
+
+Question:  surely I can make a random array between 0 and 1 more efficiently than the two options above?
+ 
+
+---------------------------------------------------------------------------
+
+EXERCISE 13: 
+
+completed.
+
+---------------------------------------------------------------------------
+
+EXERCISE 14:
+wrote
+MyFirstScript.py
+
+---------------------------------------------------------------------------
+
+EXERCISE 15:
+
+In [654]: numpy.__version__
+Out[654]: '1.6.2'
+
+In [655]: numpy.__author__
+AttributeError                            Traceback (most recent call last)
+<ipython-input-655-15ec8b95e942> in <module>()
+----> 1 numpy.__author__
+
+AttributeError: 'module' object has no attribute '__author__'
+
+---------------------------------------------------------------------------
+
+EXERCISE 16:
+
+1. using: python MyFirstScript_addFunction_argparse.py
+the script ran as normal using the default file (Gordon2005_Fig16.txt)
+
+2. using: python MyFirstScript_addFunction_argparse.py --help
+output was:
+ 	usage: MyFirstScript_addFunction_argparse.py [-h] [-f FILE]
+
+	Make a plot.
+
+	optional arguments:
+ 	 	-h, --help            show this help message and exit
+  		-f FILE, --file FILE  Input file.
+no plots made
+
+3. using: python MyFirstScript_addFunction_argparse.py -f Gordon2005_Fig16.txt
+script ran successfully
+
+4. using: python MyFirstScript_addFunction_argparse.py --file Gordon2005_Fig16.txt
+script ran successfully
+
+5. editing command using a file that doesn't exist returns:
+IOError: [Errno 2] No such file or directory: 'Gordon2005_Fig17.txt'
+
+6. using -file returns:
+ error: unrecognized arguments: Gordon2005_Fig16.txt
+
+---------------------------------------------------------------------------
+
+EXERCISE 17:
+
+completed.
+
+
+---------------------------------------------------------------------------
+
+EXERCISE 18: ?
+
+a is an instance ?
+__int__() is a function
+GetArea() is a method/function
+side is an attribute
+
+---------------------------------------------------------------------------
+
+EXERCISE 19: ? 
+
+class FitsClass(object):
+      def __init__(self, f, hdr, data):
+      	  self.filename = f
+	  self.header = hdr
+	  self.data = data
+	 
+     
+     def Save(self, outfits):
+     	 pyfits.writeto(outfits, self.hdr, self.data)
+	 return
+
+---------------------------------------------------------------------------
+
+EXERCISE 20:
+wrote pyraf_example.py
