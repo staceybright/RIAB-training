@@ -1,0 +1,89 @@
+EXERCISE 1:
+
+
+o8k401010_x1d.fits  (STIS)
+detector = 'FUV-MAMA'
+obsmode = 'ACCUM'
+target = 'MARK1044'
+
+
+lbgu17qnq_x1d.fits  (COS)
+detector = 'FUV'
+obsmode = 'TIME-TAG'
+target ='MRK-1044'
+
+
+>>> data.names
+['SEGMENT', 'EXPTIME', 'NELEM', 'WAVELENGTH', 'FLUX', 'ERROR', 'GROSS', 'GCOUNTS', 'NET', 'BACKGROUND', 'DQ', 'DQ_WGT']
+
+>>> data.columns
+ColDefs(
+    name = 'SEGMENT'; format = '4A'
+    name = 'EXPTIME'; format = 'D'; unit = 's'; disp = 'F8.3'
+    name = 'NELEM'; format = 'J'; disp = 'I6'
+    name = 'WAVELENGTH'; format = '16384D'; unit = 'angstrom'
+    name = 'FLUX'; format = '16384E'; unit = 'erg /s /cm**2 /angstrom'
+    name = 'ERROR'; format = '16384E'; unit = 'erg /s /cm**2 /angstrom'
+    name = 'GROSS'; format = '16384E'; unit = 'count /s'
+    name = 'GCOUNTS'; format = '16384E'; unit = 'count'
+    name = 'NET'; format = '16384E'; unit = 'count /s'
+    name = 'BACKGROUND'; format = '16384E'; unit = 'count /s'
+    name = 'DQ'; format = '16384I'
+    name = 'DQ_WGT'; format = '16384E'
+
+---------------------------------
+
+EXERCISE 2:
+
+lbgu17qnq_rawtag_a.fits
+obsmode = 'TIME-TAG'
+
+lbgu17qnq_rawtag_b.fits
+obsmode = 'TIME-TAG'
+
+o8k401010_raw.fits
+obsmode = 'ACCUM'
+
+TIME-TAG records the time of each photon's arrival
+ACCUM, accumulates
+
+
+---------------------------------
+
+EXERCISE 3:
+Successfully calibrated the COS and STIS data, the products are the same as retrieved from the archive 
+Plotted spectra with pyplot, see: "COS_spec.pdf" and "STIS_spec.pdf"
+
+
+---------------------------------
+
+EXERCISE 4:
+I saw no change in STIS data after changing FLATCORR keyword from "PERFORM" to "OMIT"
+--redo, didn't add recal_output/ when i was replotting.  
+
+I saw practically no change (possibly a little more noise) in COS data after changing FLATCORR keyword from "PERFORM" to "OMIT" 
+
+
+
+---------------------------------
+
+EXERCISE 5:
+smoothed COS data using boxcar sizes 2-20
+
+---------------------------------
+
+EXERCISE 6:
+
+The SN is higher for COS
+
+---------------------------------
+
+EXERCISE 7:
+
+plots saved as divid.pdf and STSI_spec_interp.pdf
+
+
+
+
+
+
