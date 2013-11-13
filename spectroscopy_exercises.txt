@@ -13,10 +13,35 @@ obsmode = 'TIME-TAG'
 target ='MRK-1044'
 
 
->>> data.names
+>>> cos.names
 ['SEGMENT', 'EXPTIME', 'NELEM', 'WAVELENGTH', 'FLUX', 'ERROR', 'GROSS', 'GCOUNTS', 'NET', 'BACKGROUND', 'DQ', 'DQ_WGT']
 
->>> data.columns
+>>> stis.names
+['SPORDER', 'NELEM', 'WAVELENGTH', 'GROSS', 'BACKGROUND', 'NET', 'FLUX', 'ERROR', 'DQ', 'A2CENTER', 'EXTRSIZE', 'MAXSRCH', 'BK1SIZE', 'BK2SIZE', 'BK1OFFST', 'BK2OFFST', 'EXTRLOCY', 'OFFSET']
+
+>>> stis.columns
+ColDefs(
+    name = 'SPORDER'; format = '1I'; null = -32767; disp = 'I11'
+    name = 'NELEM'; format = '1I'; null = -32767; disp = 'I11'
+    name = 'WAVELENGTH'; format = '1024D'; unit = 'Angstroms'; disp = 'G25.16'
+    name = 'GROSS'; format = '1024E'; unit = 'Counts/s'; disp = 'G15.7'
+    name = 'BACKGROUND'; format = '1024E'; unit = 'Counts/s'; disp = 'G15.7'
+    name = 'NET'; format = '1024E'; unit = 'Counts/s'; disp = 'G15.7'
+    name = 'FLUX'; format = '1024E'; unit = 'erg/s/cm**2/Angstrom'; disp = 'G15.7'
+    name = 'ERROR'; format = '1024E'; unit = 'erg/s/cm**2/Angstrom'; disp = 'G15.7'
+    name = 'DQ'; format = '1024I'; null = -32767; disp = 'I11'
+    name = 'A2CENTER'; format = '1E'; unit = 'pixel'; disp = 'G15.7'
+    name = 'EXTRSIZE'; format = '1E'; unit = 'pixel'; disp = 'G15.7'
+    name = 'MAXSRCH'; format = '1I'; unit = 'pixel'; null = -32767; disp = 'I11'
+    name = 'BK1SIZE'; format = '1E'; unit = 'pixel'; disp = 'G15.7'
+    name = 'BK2SIZE'; format = '1E'; unit = 'pixel'; disp = 'G15.7'
+    name = 'BK1OFFST'; format = '1E'; unit = 'pixel'; disp = 'G15.7'
+    name = 'BK2OFFST'; format = '1E'; unit = 'pixel'; disp = 'G15.7'
+    name = 'EXTRLOCY'; format = '1024E'; unit = 'pixel'; disp = 'G15.7'
+    name = 'OFFSET'; format = '1E'; unit = 'pixel'; disp = 'G15.7'
+)
+
+>>> cos.columns
 ColDefs(
     name = 'SEGMENT'; format = '4A'
     name = 'EXPTIME'; format = 'D'; unit = 's'; disp = 'F8.3'
@@ -70,17 +95,50 @@ I saw practically no change (possibly a little more noise) in COS data after cha
 EXERCISE 5:
 smoothed COS data using boxcar sizes 2-20
 
+a size of 10 seems sufficient. 
+
 ---------------------------------
 
 EXERCISE 6:
 
-The SN is higher for COS
+
+
+# STIS data
+range= np.where((wave_s[0]>1450) & (wave_s[0]<1500))   #choosing range to sample data from
+x= wave_s[0][range]
+y=flux_s[0][range]
+
+polycof=np.polyfit(x,y,1)
+polyfit=polycof[1]+polycof[0]*x   #fitting a line to the data, i.e. the signal 
+
+diff= y - polyfit
+noise = np.std(diff)
+SN = polyfit / noise
+
+###SN for STIS is ~ 21
+
+#COS data
+range_c = np.where((flat_wave_c>1350) & (flat_wave_c<1400))
+x_c= flat_wave_c[range_c]
+y_c=flat_flux_c[range_c]
+
+polycof_c=np.polyfit(x_c,y_c,1)
+polyfit_c=polycof_c[1]+polycof_c[0]*x_c
+
+
+diff_c= y_c - polyfit_c
+noise_c = np.std(diff_c)
+SN_c = polyfit_c / noise_c
+
+###SN for COS is ~ 4
+
+###The SN is better for STIS
 
 ---------------------------------
 
 EXERCISE 7:
 
-plots saved as divid.pdf and STSI_spec_interp.pdf
+plots saved as divide.pdf and STSI_spec_interp.pdf
 
 
 
